@@ -6,12 +6,12 @@
 #include <dt-bindings/zmk/bt.h>
 
 // Home row mods macro
-#define HRML(k1,k2,k3,k4) &ht LALT  k1  &ht LGUI  k2  &ht LCTRL k3  &ht LSHFT k4
-#define HRMR(k1,k2,k3,k4) &ht RSHFT k1  &ht RCTRL k2  &ht RGUI  k3  &ht RALT  k4
+#define HRML(k1,k2,k3,k4) &banana LALT  k1  &banana LGUI  k2  &banana LCTRL k3  &banana LSHFT k4
+#define HRMR(k1,k2,k3,k4) &banana RSHFT k1  &banana RCTRL k2  &banana RGUI  k3  &banana RALT  k4
 
 / {
     behaviors {
-        ht: hold_tap {
+        banana: hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
@@ -44,7 +44,7 @@
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │
             &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                            &lt 1 TAB   &lt 2 TAB     &kp SPACE  &lt 3 BSPC
+                                            &mo 1      &lt 2 TAB      &kp SPACE  &lt 3 BSPC
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
