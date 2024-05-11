@@ -6,25 +6,27 @@
 #include <dt-bindings/zmk/bt.h>
 
 // Home row mods macro
-#define HRML(k1,k2,k3,k4) &ht LALT  k1  &ht LGUI  k2  &ht LCTRL k3  &ht LSHFT k4
+#define HRML(k1,k2,k3,k4) &ht LALT  k1  &ht LGUI  k2  &ht LCTRL k3  &ht_s LSHFT k4
 #define HRMR(k1,k2,k3,k4) &ht RSHFT k1  &ht RCTRL k2  &ht RGUI  k3  &ht RALT  k4
 
 / {
     behaviors {
-        ht: hold_tap {
+        // Shorter tapping term to prefer the shifted version at high speed
+        ht_s: hold_tap_shift {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <220>;
-            quick-tap-ms = <180>;
+            tapping-term-ms = <180>;
+            quick-tap-ms = <200>;
             require-prior-idle-ms = <100>;
             bindings = <&kp>, <&kp>;
         };
-        ht_ui: hold_tap_unless_interrupted {
+        // Long tapping term to really avoid tapping by accident
+        ht: hold_others {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-unless-interrupted";
-            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <280>;
             quick-tap-ms = <200>;
             require-prior-idle-ms = <100>;
             bindings = <&kp>, <&kp>;
